@@ -31,10 +31,9 @@ int main(int argc, char *argv[])
 
     fileMonitoring.startTimer(timer);
 
-    QTimer::singleShot(2000, [&]() {
-        fileMonitoring.removeFile("../file2.txt");
-        fileMonitoring.removeFile("../file3.txt");
-    });
+    std::this_thread::sleep_for(std::chrono::milliseconds(2000));
+    fileMonitoring.removeFile("../file2.txt");
+    fileMonitoring.removeFile("../file3.txt");
 
     return a.exec();
 }
