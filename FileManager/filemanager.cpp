@@ -43,8 +43,6 @@ void FileMonitoring::removeFile(const QString& path) {
     }
 }
 
-
-
 void FileMonitoring::updateFileStatus() {
     for (auto& it : m_files) {
         QFileInfo updatedFileInfo(it.getFilePath());

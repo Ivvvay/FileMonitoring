@@ -18,7 +18,6 @@ public:
     void refreshFileInfo();
 
 private:
-    QString m_filePath;
     QFileInfo m_fileInfo;
 };
 
