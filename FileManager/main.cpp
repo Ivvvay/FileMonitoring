@@ -1,7 +1,7 @@
 #include <QCoreApplication>
 #include <thread>
 #include <iostream>
-#include "filemanager.h"
+#include "filemonitoring.h"
 
 void startTracking(FileMonitoring& fileManager)
 {
