@@ -1,7 +1,7 @@
 #include "file.h"
 #include <QDateTime>
 
-File::File(const QString& path) : m_filePath(path) {
+File::File(const QString& path) {
     m_fileInfo = QFileInfo(path);
 }
 
@@ -10,7 +10,7 @@ bool File::checkExists() const {
 }
 
 QString File::getFilePath() const {
-    return m_filePath;
+    return m_fileInfo.absoluteFilePath();
 }
 
 QString File::getFileName() const {

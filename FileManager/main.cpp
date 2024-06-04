@@ -1,8 +1,16 @@
 #include <QCoreApplication>
 #include <thread>
 #include <iostream>
-#include <QDir>
 #include "filemanager.h"
+
+void startTracking(FileMonitoring& fileManager)
+{
+    while(true)
+    {
+        fileManager.updateFileStatus();
+        std::this_thread::sleep_for( std::chrono::milliseconds(1000));
+    }
+}
 
 int main(int argc, char *argv[])
 {
@@ -22,18 +30,14 @@ int main(int argc, char *argv[])
 
     FileMonitoring& fileMonitoring = FileMonitoring::Instance();
 
-    QTimer* timer = new QTimer();
-    timer->setInterval(100);
-
     fileMonitoring.addFile("../file1.txt");
     fileMonitoring.addFile("../file2.txt");
     fileMonitoring.addFile("../file3.txt");
 
-    fileMonitoring.startTimer(timer);
-
-    std::this_thread::sleep_for(std::chrono::milliseconds(2000));
     fileMonitoring.removeFile("../file2.txt");
     fileMonitoring.removeFile("../file3.txt");
+
+    startTracking(fileMonitoring);
 
     return a.exec();
 }

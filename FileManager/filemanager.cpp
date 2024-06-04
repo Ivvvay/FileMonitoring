@@ -11,11 +11,6 @@ FileMonitoring::~FileMonitoring() {
     delete m_logger;
 }
 
-void FileMonitoring::startTimer(QTimer* timer) {
-    connect(timer, &QTimer::timeout, this, &FileMonitoring::updateFileStatus);
-    timer->start();
-}
-
 void FileMonitoring::addFile(const QString& path) {
     File file(path);
 
@@ -27,9 +22,10 @@ void FileMonitoring::addFile(const QString& path) {
 
 void FileMonitoring::removeFile(const QString& path) {
     int index = -1;
+    QFileInfo removeFileInfo(path);
 
     for (int i = 0; i < m_files.size(); ++i) {
-        if (m_files[i].getFilePath() == path) {
+        if (m_files[i].getFilePath() == removeFileInfo.absoluteFilePath()) {
             index = i;
             break;
         }
@@ -42,8 +38,6 @@ void FileMonitoring::removeFile(const QString& path) {
         qDebug() << "File not found in monitoring list: " << path;
     }
 }
-
-
 
 void FileMonitoring::updateFileStatus() {
     for (auto& it : m_files) {
