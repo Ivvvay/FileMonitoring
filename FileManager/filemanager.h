@@ -17,13 +17,11 @@ public:
 
     void addFile(const QString& path);
     void removeFile(const QString& path);
+    void updateFileStatus();
 
 private:
     FileMonitoring();
     ~FileMonitoring();
-
-public slots:
-    void updateFileStatus();
 
 signals:
     void existFileInfo(File* file);
