@@ -2,9 +2,6 @@
 #define FILEMONITORING_H
 
 #include <QObject>
-#include <QFileInfo>
-#include <QString>
-#include <QTimer>
 #include <QList>
 #include "file.h"
 #include "logger.h"
@@ -20,8 +17,6 @@ public:
 
     void addFile(const QString& path);
     void removeFile(const QString& path);
-
-    void startTimer(QTimer* timer);
 
 private:
     FileMonitoring();

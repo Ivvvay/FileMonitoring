@@ -10,7 +10,7 @@ bool File::checkExists() const {
 }
 
 QString File::getFilePath() const {
-    return m_fileInfo.path();
+    return m_fileInfo.absoluteFilePath();
 }
 
 QString File::getFileName() const {

@@ -15,7 +15,6 @@ public:
 public slots:
     void printExistInfo(File* file);
     void printChangedInfo(File* file);
-
 };
 
 #endif // LOGGER_H
